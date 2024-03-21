@@ -15,5 +15,3 @@ lagmatrix<-function (y, lag){
 
 } # end of the funciton lagmatrix 
 
-#I need to add description to this function 
-a<-10
