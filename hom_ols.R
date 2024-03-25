@@ -1,10 +1,11 @@
-#input 
-# y  is tx1
-#x is txk
-
-#Output:
-#  Beta = OLS estimate of beta (kx1)
-#VBeta = Estimate of covariance matrix of beta (kxk)
+#' Procedure for producing OLS estimates of b
+#' based on Homoskedasticity of residuals assumption 
+#'Input:
+#' y = tx1
+#' x = txk
+#' Output:
+#' Beta = OLS estimate of beta (kx1)
+#' VBeta = Estimate of covariance matrix of beta (kxk)
 
 
 hom_ols <- function (y, x){
@@ -20,13 +21,9 @@ hom_ols <- function (y, x){
   ser<- sqrt(c(ess)/ndf)
   vbeta<-(c(ess)/ndf)*xxi
   rbarsq<- 1 - (c(ess)/ndf)/(tss/(dim(x)[1]-1))
-  se_beta<- sqrt(diag(vbeta))
-  return(list(bhat, vbeta, se_beta, ser, rbarsq))
+  se_beta<- as.matrix(sqrt(diag(vbeta)))
+  bhat_dim<-dim(bhat)
+  vbeta_dim<-dim(vbeta)
+  se_beta_dim<-dim(se_beta)
+  return(list(bhat_dim, bhat, vbeta_dim, vbeta, se_beta_dim, se_beta, ser, rbarsq))
 }
-
-
-
-
-
-
-
