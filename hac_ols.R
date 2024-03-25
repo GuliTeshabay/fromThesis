@@ -1,4 +1,19 @@
-# hac_ols function ----
+#' Procedure for estimating the regression y = xbeta+ u 
+#' The procedure produces the OLS estimate of b and 
+#' a hetero/autocorrelation consistent estimate of the autocorrelation matrix.
+
+#' Input:
+#' y = tx1
+#' x = txk
+#' nma=truncation parameter (nma=0, White SEs) 
+#' ikern = kernel indicator
+#' 2 => rectangular
+
+#' Output:
+#' Beta = OLS estimate of beta (kx1)
+#' VBeta = Robust estimate of covariance matrix of beta (kxk)
+
+
 hac_ols<- function (y,x,nma,ikern) {
   xx<- t(x)%*%x
   xxi<- inv(xx)
@@ -49,3 +64,7 @@ hac_ols<- function (y,x,nma,ikern) {
   vbeta_dim<-dim(vbeta)
   return(list(bhat, vbeta_dim, vbeta, se_beta, ser, rbarsq))
 }
+
+
+
+
