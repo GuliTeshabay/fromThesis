@@ -15,3 +15,6 @@ lagmatrix<-function (y, lag){
 
 } # end of the funciton lagmatrix 
 
+a<-10
+
+#I want to add some comments
