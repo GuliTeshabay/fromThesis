@@ -1,5 +1,20 @@
-# hac_tsls function ----
-
+#'Procedure for estimating the regression y = xbeta+ u using 2SLS 
+#'
+#'The procedure produces the TSLS estimate of b and 
+#'a hetero/autocorrelation consistent estimate of the autocorrelation matrix. 
+#'Input:   
+#'y = tx1 
+#'x = txk (regressors) 
+#'w = tx1 (instruments) 
+#'nma=truncation parameter (nma=0, White SEs)  
+#'ikern = kernel 
+#'indicator 1 => 
+#'triangular 2 => rectangular
+#'
+#'Output:   
+#'Beta = OLS estimate of beta (kx1) 
+#'VBeta = Robust estimate of covariance matrix of beta (kxk) 
+#'
 
 hac_tsls<- function (y, x, w, nma,ikern) {
   x_hat<- w %*% ((inv(t(w) %*% w )) %*% (t(w) %*% x))
